@@ -1,5 +1,6 @@
 # Document Signer & Annotation Tool
-It allows users to upload PDF documents, annotate them with highlights, underlines, comments, and signatures, and export the annotated document as a PDF. The application features a modern, responsive design with an intuitive user interface.
+
+This project is a single-page application (SPA) built with Next.js for the Frontend Technical Assessment. It allows users to upload PDF documents, annotate them with highlights, underlines, comments, and signatures, and export the annotated document as a PDF. The application features a modern, responsive design with an intuitive user interface.
 
 ## Setup and Running Instructions
 
@@ -14,19 +15,21 @@ It allows users to upload PDF documents, annotate them with highlights, underlin
    git clone https://github.com/abdulhammed24/pdflux.git
    cd pdflux
 
+Install Dependencies:
+bash
 
-## Install Dependencies:
-  ```bash
-  npm install
+npm install
 
-## Run the Development Server:
-  ```bash
-  npm run dev
+Run the Development Server:
+bash
+
+npm run dev
 
 Open http://localhost:3000 in your browser to view the application.
 
 Build for Production (optional):
-```bash
+bash
+
 npm run build
 npm start
 
@@ -66,6 +69,7 @@ npm start
 - **Solution**: Used TailwindCSS with a mobile-first approach and dynamic viewport scaling for the PDF viewer.  
 
 ## Features I Would Add with More Time
+
 - **Annotation Presets**: Save and reuse common annotation styles (e.g., favorite highlight colors).  
 - **Multi-Page Support**: Improve navigation and annotation across multiple PDF pages.  
 - **Collaboration Features**: Real-time annotation sharing with other users via WebSockets.  
