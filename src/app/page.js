@@ -241,7 +241,7 @@ export default function Home() {
   return (
     <DndProvider backend={HTML5Backend}>
       <main className="min-h-screen bg-gray-100 flex flex-col items-center p-4 md:p-6 lg:p-8">
-        <h1 className="text-2xl md:text-3xl font-bold mb-6">
+        <h1 className="text-2xl text-black md:text-3xl font-bold mb-6">
           Document Signer & Annotation Tool
         </h1>
         <div className="w-full md:max-w-6xl flex flex-col md:flex-row gap-4">

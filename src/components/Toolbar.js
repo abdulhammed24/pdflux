@@ -47,7 +47,9 @@ export default function Toolbar({
     <div className="flex flex-col gap-4 p-4 bg-gray-200 rounded-lg h-fit">
       <button
         className={`flex items-center gap-2 p-2 rounded ${
-          localTool === 'highlight' ? 'bg-blue-500 text-white' : 'bg-white'
+          localTool === 'highlight'
+            ? 'bg-blue-500 text-white'
+            : 'bg-white text-black'
         }`}
         onClick={() => handleToolChange('highlight')}
       >
@@ -56,7 +58,9 @@ export default function Toolbar({
       </button>
       <button
         className={`flex items-center gap-2 p-2 rounded ${
-          localTool === 'underline' ? 'bg-blue-500 text-white' : 'bg-white'
+          localTool === 'underline'
+            ? 'bg-blue-500 text-white'
+            : 'bg-white text-black'
         }`}
         onClick={() => handleToolChange('underline')}
       >
@@ -65,7 +69,9 @@ export default function Toolbar({
       </button>
       <button
         className={`flex items-center gap-2 p-2 rounded ${
-          localTool === 'comment' ? 'bg-blue-500 text-white' : 'bg-white'
+          localTool === 'comment'
+            ? 'bg-blue-500 text-white'
+            : 'bg-white text-black'
         }`}
         onClick={() => handleToolChange('comment')}
       >
@@ -74,7 +80,9 @@ export default function Toolbar({
       </button>
       <button
         className={`flex items-center gap-2 p-2 rounded ${
-          localTool === 'signature' ? 'bg-blue-500 text-white' : 'bg-white'
+          localTool === 'signature'
+            ? 'bg-blue-500 text-white'
+            : 'bg-white text-black'
         }`}
         onClick={() => handleToolChange('signature')}
       >
@@ -96,7 +104,7 @@ export default function Toolbar({
         <span>Clear All</span>
       </button>
       <div className="flex flex-col items-center gap-2">
-        <label className="text-gray-700">Color</label>
+        <label className="text-gray-700">Select Customize Color</label>
         <input
           type="color"
           value={color}
