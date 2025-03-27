@@ -90,14 +90,14 @@ export default function Toolbar({
         <span>Signature</span>
       </button>
       <button
-        className="flex items-center gap-2 p-2 rounded bg-white hover:bg-gray-100"
+        className="flex items-center gap-2 p-2 roundedbg-white text-black hover:bg-gray-100"
         onClick={handleUndo}
       >
         <RotateCcw size={20} />
         <span>Undo</span>
       </button>
       <button
-        className="flex items-center gap-2 p-2 rounded bg-white hover:bg-gray-100"
+        className="flex items-center gap-2 p-2 roundedbg-white text-black hover:bg-gray-100"
         onClick={handleClear}
       >
         <Trash2 size={20} />

@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Document Signer & Annotation Tool
 
-## Getting Started
+This project is a single-page application (SPA) built with Next.js for the Frontend Technical Assessment. It allows users to upload PDF documents, annotate them with highlights, underlines, comments, and signatures, and export the annotated document as a PDF. The application features a modern, responsive design with an intuitive user interface.
 
-First, run the development server:
+## Setup and Running Instructions
 
-```bash
+### Prerequisites
+- **Node.js**: Version 18 or higher
+- **npm**: Comes with Node.js (or use `yarn` if preferred)
+- **Git**: To clone the repository
+
+### Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/abdulhammed24/pdflux.git
+   cd pdflux
+
+
+Install Dependencies:
+bash
+
+npm install
+
+Run the Development Server:
+bash
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Build for Production (optional):
+bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm run build
+npm start
 
-## Learn More
+## Libraries and Tools Used
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**: Framework for building the SPA with server-side rendering and static site generation capabilities.  
+- **react-pdf**: Renders PDF documents in the browser for display and interaction.  
+- **pdf-lib**: Manipulates and embeds annotations into the exported PDF.  
+- **pdfjs-dist**: Provides PDF rendering and text layer support for annotations.  
+- **react-dnd**: Implements drag-and-drop functionality for file uploads.  
+- **signature_pad**: Enables freehand signature drawing on the document.  
+- **zustand**: Lightweight state management for handling annotations and UI states.  
+- **lucide-react**: Provides modern, customizable icons for the UI.  
+- **tailwindcss**: Utility-first CSS framework for responsive and sleek styling.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Why These Tools?
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js**: Chosen for its SPA capabilities, built-in routing, and performance optimizations like Turbopack.  
+- **react-pdf & pdf-lib**: Essential for PDF rendering and manipulation, ensuring annotations are preserved in exports.  
+- **react-dnd**: Simplifies drag-and-drop with a robust API.  
+- **signature_pad**: Offers a lightweight solution for signature drawing.  
+- **zustand**: Keeps state management simple and performant without boilerplate.  
+- **tailwindcss**: Speeds up UI development with responsive, reusable styles.  
 
-## Deploy on Vercel
+## Challenges Faced and Solutions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### PDF Annotation Positioning  
+- **Challenge**: Accurately mapping user clicks to PDF coordinates for annotations.  
+- **Solution**: Used pdfjs-dist text layer to align annotations with document content and normalized coordinates relative to the viewport.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Exporting Annotations  
+- **Challenge**: Embedding highlights, underlines, and signatures into the PDF without quality loss.  
+- **Solution**: Leveraged pdf-lib to programmatically add annotations as PDF objects, ensuring fidelity to the original document.  
+
+### Responsive Design  
+- **Challenge**: Ensuring the annotation tools worked seamlessly across screen sizes.  
+- **Solution**: Used TailwindCSS with a mobile-first approach and dynamic viewport scaling for the PDF viewer.  
+
+## Features I Would Add with More Time
+- **Annotation Presets**: Save and reuse common annotation styles (e.g., favorite highlight colors).  
+- **Multi-Page Support**: Improve navigation and annotation across multiple PDF pages.  
+- **Collaboration Features**: Real-time annotation sharing with other users via WebSockets.  
+- **Accessibility**: Enhance keyboard navigation and screen reader support for better inclusivity.  
