@@ -15,21 +15,18 @@ It allows users to upload PDF documents, annotate them with highlights, underlin
    cd pdflux
 
 
-Install Dependencies:
-bash
+## Install Dependencies:
+  ```bash
+  npm install
 
-npm install
-
-Run the Development Server:
-bash
-
-npm run dev
+## Run the Development Server:
+  ```bash
+  npm run dev
 
 Open http://localhost:3000 in your browser to view the application.
 
 Build for Production (optional):
-bash
-
+```bash
 npm run build
 npm start
 
