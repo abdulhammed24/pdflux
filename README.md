@@ -1,6 +1,5 @@
 # Document Signer & Annotation Tool
-
-This project is a single-page application (SPA) built with Next.js for the Frontend Technical Assessment. It allows users to upload PDF documents, annotate them with highlights, underlines, comments, and signatures, and export the annotated document as a PDF. The application features a modern, responsive design with an intuitive user interface.
+It allows users to upload PDF documents, annotate them with highlights, underlines, comments, and signatures, and export the annotated document as a PDF. The application features a modern, responsive design with an intuitive user interface.
 
 ## Setup and Running Instructions
 
