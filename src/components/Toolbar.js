@@ -44,80 +44,80 @@ export default function Toolbar({
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4 bg-gray-200 rounded-lg h-fit">
+    <div className="flex flex-col gap-4 p-6 bg-white/30 backdrop-blur-lg rounded-xl h-fit border border-gray-200 shadow-lg">
       <button
-        className={`flex items-center gap-2 p-2 rounded ${
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
           localTool === 'highlight'
-            ? 'bg-blue-500 text-white'
-            : 'bg-white text-black'
+            ? 'bg-indigo-500 text-white shadow-md'
+            : 'bg-white/80 text-gray-800 hover:bg-indigo-100'
         }`}
         onClick={() => handleToolChange('highlight')}
       >
         <Highlighter size={20} />
-        <span>Highlight</span>
+        <span className="font-medium">Highlight</span>
       </button>
       <button
-        className={`flex items-center gap-2 p-2 rounded ${
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
           localTool === 'underline'
-            ? 'bg-blue-500 text-white'
-            : 'bg-white text-black'
+            ? 'bg-indigo-500 text-white shadow-md'
+            : 'bg-white/80 text-gray-800 hover:bg-indigo-100'
         }`}
         onClick={() => handleToolChange('underline')}
       >
         <Underline size={20} />
-        <span>Underline</span>
+        <span className="font-medium">Underline</span>
       </button>
       <button
-        className={`flex items-center gap-2 p-2 rounded ${
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
           localTool === 'comment'
-            ? 'bg-blue-500 text-white'
-            : 'bg-white text-black'
+            ? 'bg-indigo-500 text-white shadow-md'
+            : 'bg-white/80 text-gray-800 hover:bg-indigo-100'
         }`}
         onClick={() => handleToolChange('comment')}
       >
         <MessageSquare size={20} />
-        <span>Comment</span>
+        <span className="font-medium">Comment</span>
       </button>
       <button
-        className={`flex items-center gap-2 p-2 rounded ${
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
           localTool === 'signature'
-            ? 'bg-blue-500 text-white'
-            : 'bg-white text-black'
+            ? 'bg-indigo-500 text-white shadow-md'
+            : 'bg-white/80 text-gray-800 hover:bg-indigo-100'
         }`}
         onClick={() => handleToolChange('signature')}
       >
         <PenSquare size={20} />
-        <span>Signature</span>
+        <span className="font-medium">Signature</span>
       </button>
       <button
-        className="flex items-center gap-2 p-2 roundedbg-white text-black hover:bg-gray-100"
+        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/80 text-gray-800 hover:bg-indigo-100 transition-all duration-300"
         onClick={handleUndo}
       >
         <RotateCcw size={20} />
-        <span>Undo</span>
+        <span className="font-medium">Undo</span>
       </button>
       <button
-        className="flex items-center gap-2 p-2 roundedbg-white text-black hover:bg-gray-100"
+        className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/80 text-gray-800 hover:bg-red-100 transition-all duration-300"
         onClick={handleClear}
       >
         <Trash2 size={20} />
-        <span>Clear All</span>
+        <span className="font-medium">Clear All</span>
       </button>
-      <div className="flex flex-col items-center gap-2">
-        <label className="text-gray-700">Select Customize Color</label>
+      <div className="flex items-center gap-3 px-4 py-3 bg-white/80 rounded-lg">
+        <label className="text-gray-700 font-medium">Select Color</label>
         <input
           type="color"
           value={color}
           onChange={handleColorChange}
-          className="w-10 h-10"
+          className="size-10  border-none cursor-pointer"
         />
       </div>
       <button
-        className="flex items-center justify-center gap-2 p-2 bg-green-500 text-white rounded mt-auto"
+        className="flex items-center justify-center gap-3 px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg mt-auto shadow-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-300"
         onClick={exportPdf}
       >
         <Download size={20} />
-        <span>Export</span>
+        <span className="font-medium">Export</span>
       </button>
     </div>
   );

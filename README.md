@@ -15,23 +15,20 @@ This project is a single-page application (SPA) built with Next.js for the Front
    git clone https://github.com/abdulhammed24/pdflux.git
    cd pdflux
 
-Install Dependencies:
-bash
+2. **Install Dependencies**:
+   ```bash
+   npm install
 
-npm install
-
-Run the Development Server:
-bash
-
-npm run dev
+3. **Run the Development Server**:
+   ```bash
+   npm run dev
 
 Open http://localhost:3000 in your browser to view the application.
 
-Build for Production (optional):
-bash
-
-npm run build
-npm start
+4. **Build for Production (optional)**:
+      ```bash
+      npm run build
+      npm start
 
 ## Libraries and Tools Used
 

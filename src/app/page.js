@@ -97,6 +97,14 @@ export default function Home() {
     }
   };
 
+  const handleRemovePdf = () => {
+    setPdfFile(null);
+    clearAnnotations();
+    setCurrentPage(1);
+    setNumPages(null);
+    setError(null);
+  };
+
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
     setLoading(false);
@@ -172,17 +180,15 @@ export default function Home() {
             const textWidth = text.length * (fontSize * 0.6);
             const textHeight = fontSize * 1.2;
 
-            // Draw yellow background
             page.drawRectangle({
               x: pdfX,
               y: pdfY - textHeight + fontSize * 0.2,
               width: textWidth,
               height: textHeight,
-              color: rgbFromHex('#fefcbf'), // Match bg-yellow-200
+              color: rgbFromHex('#fefcbf'),
               opacity: 0.5,
             });
 
-            // Draw comment text
             page.drawText(text, {
               x: pdfX,
               y: pdfY,
@@ -190,7 +196,6 @@ export default function Home() {
               color: rgbFromHex('#000000'),
             });
 
-            // Draw red pointer circle
             page.drawCircle({
               x: pdfX,
               y: pdfY + 5 * scale,
@@ -240,12 +245,12 @@ export default function Home() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <main className="min-h-screen bg-gray-100 flex flex-col items-center p-4 md:p-6 lg:p-8">
-        <h1 className="text-2xl text-black md:text-3xl font-bold mb-6">
+      <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex flex-col items-center p-6 md:p-8 lg:p-10">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8 tracking-tight">
           Document Signer & Annotation Tool
         </h1>
-        <div className="w-full md:max-w-6xl flex flex-col md:flex-row gap-4">
-          <div className="md:w-1/4 bg-white rounded-lg shadow-lg p-4 flex-shrink-0">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row gap-6">
+          <div className="md:w-1/4 bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-6 flex-shrink-0 border border-gray-100">
             <Toolbar
               setTool={handleSetTool}
               setColor={setColor}
@@ -254,8 +259,7 @@ export default function Home() {
               clearAnnotations={clearAnnotations}
             />
           </div>
-
-          <div className="md:w-3/4 bg-white rounded-lg shadow-lg p-4 flex-grow">
+          <div className="md:w-3/4 bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-6 flex-grow border border-gray-100">
             {!pdfFile ? (
               <PDFUploader
                 loading={loading}
@@ -271,12 +275,15 @@ export default function Home() {
                   goToPreviousPage={goToPreviousPage}
                   goToNextPage={goToNextPage}
                   handleChangePdf={handleChangePdf}
+                  handleRemovePdf={handleRemovePdf}
                   pdfFile={pdfFile}
                   fileInputRef={fileInputRef}
                   handleFileUpload={handleFileUpload}
                 />
                 {loading ? (
-                  <p className="text-gray-600">Processing...</p>
+                  <p className="text-gray-500 text-center py-10">
+                    Processing...
+                  </p>
                 ) : (
                   <PDFViewer
                     pdfFile={pdfFile}
@@ -298,7 +305,9 @@ export default function Home() {
                     cleanupSignaturePad={cleanupSignaturePad}
                   />
                 )}
-                {error && <p className="mt-4 text-red-600">{error}</p>}
+                {error && (
+                  <p className="mt-4 text-red-500 text-center">{error}</p>
+                )}
               </div>
             )}
           </div>

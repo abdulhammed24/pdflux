@@ -1,4 +1,3 @@
-// src/components/PDFViewer.js
 import { useRef } from 'react';
 import { Document, Page } from 'react-pdf';
 import SignaturePad from 'signature_pad';
@@ -13,9 +12,6 @@ export default function PDFViewer({
   addAnnotation,
   onDocumentLoadSuccess,
   setError,
-  handleMouseDown,
-  handleMouseMove,
-  handleMouseUp,
   pdfContainerRef,
   signingRef,
   drawingRef,
@@ -43,29 +39,41 @@ export default function PDFViewer({
       container.style.top = `${y}px`;
       container.style.zIndex = '10';
       container.style.backgroundColor = 'white';
-      container.style.border = '1px dashed black';
-      container.style.padding = '5px';
+      container.style.border = '1px dashed gray';
+      container.style.padding = '8px';
+      container.style.borderRadius = '8px';
+      container.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
 
       const canvas = document.createElement('canvas');
       canvas.width = 200;
       canvas.height = 100;
+      canvas.style.borderRadius = '4px';
       container.appendChild(canvas);
 
       const controls = document.createElement('div');
       controls.style.display = 'flex';
-      controls.style.gap = '5px';
-      controls.style.marginTop = '5px';
+      controls.style.gap = '8px';
+      controls.style.marginTop = '8px';
+      controls.style.justifyContent = 'center';
 
       const clearBtn = document.createElement('button');
       clearBtn.textContent = 'Clear';
-      clearBtn.style.padding = '2px 5px';
+      clearBtn.style.padding = '4px 8px';
+      clearBtn.style.backgroundColor = '#f1f5f9';
+      clearBtn.style.borderRadius = '4px';
+      clearBtn.style.border = 'none';
+      clearBtn.style.cursor = 'pointer';
       clearBtn.addEventListener('click', () =>
         signaturePadRef.current?.clear(),
       );
 
       const undoBtn = document.createElement('button');
       undoBtn.textContent = 'Undo';
-      undoBtn.style.padding = '2px 5px';
+      undoBtn.style.padding = '4px 8px';
+      undoBtn.style.backgroundColor = '#f1f5f9';
+      undoBtn.style.borderRadius = '4px';
+      undoBtn.style.border = 'none';
+      undoBtn.style.cursor = 'pointer';
       undoBtn.addEventListener('click', () => {
         const strokes = signaturePadRef.current.toData();
         if (strokes.length > 0) {
@@ -76,7 +84,12 @@ export default function PDFViewer({
 
       const confirmBtn = document.createElement('button');
       confirmBtn.textContent = 'Confirm';
-      confirmBtn.style.padding = '2px 5px';
+      confirmBtn.style.padding = '4px 8px';
+      confirmBtn.style.backgroundColor = '#10b981';
+      confirmBtn.style.color = 'white';
+      confirmBtn.style.borderRadius = '4px';
+      confirmBtn.style.border = 'none';
+      confirmBtn.style.cursor = 'pointer';
       confirmBtn.addEventListener('click', () => {
         const dataURL = signaturePadRef.current.toDataURL('image/png');
         if (!signaturePadRef.current.isEmpty()) {
@@ -95,7 +108,12 @@ export default function PDFViewer({
 
       const cancelBtn = document.createElement('button');
       cancelBtn.textContent = 'Cancel';
-      cancelBtn.style.padding = '2px 5px';
+      cancelBtn.style.padding = '4px 8px';
+      cancelBtn.style.backgroundColor = '#ef4444';
+      cancelBtn.style.color = 'white';
+      cancelBtn.style.borderRadius = '4px';
+      cancelBtn.style.border = 'none';
+      cancelBtn.style.cursor = 'pointer';
       cancelBtn.addEventListener('click', () => {
         cleanupSignaturePad();
         setTool(null);
@@ -128,6 +146,7 @@ export default function PDFViewer({
         preview.style.backgroundColor = color;
         preview.style.opacity = '0.5';
         preview.style.height = '20px';
+        preview.style.borderRadius = '2px';
       } else if (tool === 'underline') {
         preview.style.borderBottom = `2px solid ${color}`;
         preview.style.height = '2px';
@@ -201,7 +220,7 @@ export default function PDFViewer({
   return (
     <div
       ref={pdfContainerRef}
-      className="relative overflow-auto max-h-[80vh]"
+      className="relative overflow-auto max-h-[80vh] rounded-xl border border-gray-200 shadow-lg bg-white/90 p-4"
       style={{
         cursor: tool === 'signature' ? 'crosshair' : 'default',
       }}
@@ -219,6 +238,7 @@ export default function PDFViewer({
           renderTextLayer={false}
           renderAnnotationLayer={false}
           width={Math.min(800, window.innerWidth * 0.6)}
+          className="shadow-md rounded-lg"
         />
         {annotations
           .filter((ann) => ann.page === currentPage)
@@ -239,6 +259,7 @@ export default function PDFViewer({
                     ? '100px'
                     : 'auto'),
                 height: ann.type === 'highlight' ? '20px' : 'auto',
+                borderRadius: ann.type === 'highlight' ? '2px' : '0',
               }}
             >
               {ann.type === 'signature' && (
@@ -246,11 +267,12 @@ export default function PDFViewer({
                   src={ann.dataURL}
                   alt="Signature"
                   style={{ width: '200px', height: '100px' }}
+                  className="shadow-sm rounded-md"
                 />
               )}
               {ann.type === 'comment' && (
                 <div style={{ position: 'relative' }}>
-                  <span className="bg-yellow-200 p-1 rounded text-sm">
+                  <span className="bg-yellow-100 p-2 rounded-lg text-sm shadow-sm border border-yellow-200">
                     {ann.text}
                   </span>
                   <div
@@ -258,10 +280,11 @@ export default function PDFViewer({
                       position: 'absolute',
                       left: 0,
                       top: '-5px',
-                      width: '6px',
-                      height: '6px',
+                      width: '8px',
+                      height: '8px',
                       backgroundColor: 'red',
                       borderRadius: '50%',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                     }}
                   />
                 </div>
